@@ -4,7 +4,7 @@ CO-LAB Vault
 
 ## Usage
 
-1. Run the application using `node app.js`.
+1. Run the application using `node ./server.js`.
 
 ## Features
 
