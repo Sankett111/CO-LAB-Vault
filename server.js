@@ -1,9 +1,20 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-PORT = 3000;
+PORT = 5000;
 
 const app = express();
+
+
+
+app.use(express.static('frontend'));
+app.use('/css',express.static(__dirname + 'frontend/css/style.css'));
+app.use('/js',express.static(__dirname + 'frontend/js/script.js'));
+app.use('/images',express.static(__dirname + 'frontend/images/mars.png,space.png'));
+
+app.get('',(req, res) => {
+  res.sendFile(__dirname+'/frontend/js/index.html')
+});
 
 
 const corsOptions = {
