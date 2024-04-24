@@ -1,11 +1,9 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-PORT = 5000;
+PORT = 8000;
 
 const app = express();
-
-
 
 app.use(express.static('frontend'));
 app.use('/css',express.static(__dirname + 'frontend/css/style.css'));
