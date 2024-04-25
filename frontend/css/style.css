@@ -60,7 +60,7 @@ ol {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    height: 100vh;
+    height: 50vh;
 }
 
 .mars {
@@ -278,3 +278,67 @@ footer a {
 
 
 
+
+
+
+.bg-info-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/star-background-c6rt3qqamnstqve6.jpg) no-repeat fixed center;
+    background-size: cover;
+    animation: scaling 60s linear infinite;
+}
+
+@keyframes scaling {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bg-info-img::before {
+    
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+.project-info {
+    position: fixed;
+    top: 100px;
+    left: 100px; /* Space from the left border */
+    width: 500px; /* Width of the transparent div */
+    height: 75vh; /* Full height of the viewport */
+    background-color: rgba(28, 47, 152, 0.477); /* Semi-transparent black */
+    color: white;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    z-index: 9999; /* Ensure it's above other elements */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+}
+
+.project-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}

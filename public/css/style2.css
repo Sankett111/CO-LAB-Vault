@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 :root {
     --main-bg-color: #1e1e1e;
-    --light-orange: #ff6004;
+    --light-orange: #04d1ff;
     --dark-orange: #ff6600c0;
   }
 
@@ -13,8 +13,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #333;
+    color: #ffffff;
+    background: url(../images/star-background-c6rt3qqamnstqve6.jpg) no-repeat fixed center;
+    background-size: cover;
+    animation: scaling 60s linear infinite;
   }
+  
+  .container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+}
 
   .logo {
     position: absolute;
@@ -23,7 +33,7 @@
     width: 150px;
   }
 section.download {
-    background: #fff;
+    background: #1f26b58a;
     width: 430px;
     max-width: 90%;
     border-radius: 25px;
