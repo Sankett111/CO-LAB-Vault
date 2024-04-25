@@ -18,7 +18,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url(images/space.jpg) no-repeat fixed center;
+    background: url(../images/space.jpg) no-repeat fixed center;
     background-size: cover;
     animation: scaling 60s linear infinite;
 }
@@ -36,6 +36,7 @@ body {
 }
 
 .bg-img::before {
+    
     content: '';
     position: absolute;
     top: 0;
