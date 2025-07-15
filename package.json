@@ -1,17 +1,24 @@
 {
   "name": "kaizer",
   "version": "1.0.0",
-  "description": "",
+  "description": "CO-LAB Vault",
+  "keywords": [],
+  "homepage": "https://github.com/Sankett111/CO-LAB-Vault#readme",
+  "bugs": {
+    "url": "https://github.com/Sankett111/CO-LAB-Vault/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sankett111/CO-LAB-Vault.git"
+  },
+  "license": "ISC",
+  "author": "kai",
+  "type": "commonjs",
   "main": "index.js",
- 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server.js"
-    
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
@@ -19,7 +26,7 @@
     "express": "^4.18.2",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.1",
-    "multer": "^1.4.5-lts.1",
+    "multer": "^2.0.1",
     "nodemailer": "^6.9.13",
     "nodemon": "^3.1.0",
     "uuid": "^9.0.1"

@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-Lab Vault</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Co-Lab Vault</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/style.css" /> 
 </head>
-
 <body>
-    <span class="bg-img"></span>
+   <span class="bg-img"></span>
     <img src="../images/mars.png" alt="Co-Lab Vault" class="mars">
     <div class="container">
         <header>
@@ -27,7 +24,7 @@
                 <li><a href="#">Contact</a></li>
             </ol>
         </header>
-        <main>
+           <main>
             <h1>Streamline Sharing: Your Vault. <br>Effortless Links: Co-Lab Vault</h1>
             <p>Step into the realm of CO-LAB VAULT, where the intricacies of file sharing dissolve into a seamless
                 symphony of efficiency.
@@ -71,17 +68,16 @@
 
             </p>
         </footer>
-    </div>
-    <div id="drag-drop-area">
-        <input type="file" id="file-input" accept=".txt,.pdf,.doc,.docx" style="display: none;">
-        <label for="file-input">
-            <span>Browse Files</span>
-        </label>
-        <span id="drag-drop-text">or Drag & Drop Files Here</span>
-    </div>
+  
 
+  <div id="drag-drop-area">
+    <p>Drag & Drop files here<br>or click to browse</p>
+    <input type="file" id="file-input" style="display: none;" />
+  </div>
 
+  <div id="result"></div>
+
+  <script src="./js/script.js">
+  </script>
 </body>
-<script src="js/script.js"></script>
-
 </html>

@@ -1,83 +1,64 @@
 const dragDropArea = document.getElementById('drag-drop-area');
+    const fileInput = document.getElementById('file-input');
+    const resultDiv = document.getElementById('result');
+    const customFilenameInput = document.getElementById('custom-filename');
 
-dragDropArea.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    dragDropArea.classList.add('dragover');
-});
+    dragDropArea.addEventListener('click', () => {
+      fileInput.click();
+    });
 
-dragDropArea.addEventListener('dragleave', () => {
-    dragDropArea.classList.remove('dragover');
-});
+    fileInput.addEventListener('change', () => {
+      handleFiles(fileInput.files);
+    });
 
-dragDropArea.addEventListener('drop', (e) => {
-    e.preventDefault();
-    dragDropArea.classList.remove('dragover');
-    
-    const files = e.dataTransfer.files;
-    handleDrop(files);
-});
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dragDropArea.addEventListener(eventName, e => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, false);
+    });
 
-function handleDrop(files) {
-    for (let i = 0; i < files.length; i++) {
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dragDropArea.addEventListener(eventName, () => {
+        dragDropArea.classList.add('highlight');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dragDropArea.addEventListener(eventName, () => {
+        dragDropArea.classList.remove('highlight');
+      }, false);
+    });
+
+    dragDropArea.addEventListener('drop', e => {
+      const files = e.dataTransfer.files;
+      handleFiles(files);
+    });
+
+    function handleFiles(files) {
+      for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const reader = new FileReader();
 
-        reader.onload = (function(file) { 
-            return function(event) {
-                const dataURL = event.target.result;
-                const fileType = file.type;
-                const fileName = file.name;
+        const formData = new FormData();
+        formData.append('myfile', file);
 
-                const formData = new FormData();
-                formData.append('file', file);
-
-                fetch('http://localhost:5000/api/files', 
-                { 
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('File uploaded successfully');
-                    } else {
-                        console.error('Failed to upload file');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error uploading file:', error);
-                });
-
-                
-        
-            };
-        })(file); 
-
-        reader.readAsDataURL(file);
+        fetch('http://localhost:5000/api/files', {
+          method: 'POST',
+          body: formData
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Upload success:', data);
+            resultDiv.innerHTML = `
+              <p style="color:green;">
+                File uploaded successfully:<br>
+                <a href="${data.file}" target="_blank">${data.file}</a>
+              </p>
+            `;
+          })
+          .catch(err => {
+            console.error('Error uploading file:', err);
+            resultDiv.innerHTML = `<p style="color:red;">Upload error: ${err.message}</p>`;
+          });
+      }
     }
-}
-
-function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
-}
-
-function highlight() {
-    dragDropArea.classList.add('highlight');
-}
-
-function unhighlight() {
-    dragDropArea.classList.remove('highlight');
-}
-
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dragDropArea.addEventListener(eventName, preventDefaults, false);
-});
-
-['dragenter', 'dragover'].forEach(eventName => {
-    dragDropArea.addEventListener(eventName, highlight, false);
-});
-
-['dragleave', 'drop'].forEach(eventName => {
-    dragDropArea.addEventListener(eventName, unhighlight, false);
-});
-
