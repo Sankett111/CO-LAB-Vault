@@ -7,16 +7,135 @@
     <title>Download | CO-LAB Vault - Collaborative File Sharing System</title>
     <link rel="stylesheet" href="/css/style2.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-        </style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --main-bg-color: #1e1e1e;
+            --light-orange: #04d1ff;
+            --dark-orange: #ff6600c0;
+        }
 
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: white;
+            overflow: hidden;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .bg-img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-image: url(/images/star-background-c6rt3qqamnstqve6.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            animation: scaling 60s linear infinite;
+        }
+
+        @keyframes scaling {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .bg-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        section.download {
+            background: rgba(28, 47, 152, 0.8);
+            width: 430px;
+            max-width: 90%;
+            border-radius: 25px;
+            box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.3);
+            padding: 2.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .download h2 {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .download p {
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .download__meta h4 {
+            margin-bottom: 10px;
+            line-height: 1.3;
+            color: #ffffff;
+        }
+
+        .download__meta small {
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+
+        .send-btn-container a {
+            display: inline-block;
+            font-size: 18px;
+            padding: 12px 40px;
+            margin-top: 20px;
+            background: var(--light-orange);
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+            font-weight: 600;
+        }
+
+        .send-btn-container a:hover {
+            background: var(--dark-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .download h4.error {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+    </style>
 </head>
 
 <body>
+    <span class="bg-img"></span>
     
     <section class="download">
         <% if(locals.error){ %>
-        <h4><%= locals.error %> </h4>
+        <h4 class="error"><%= locals.error %></h4>
         <% } else { %>
         <h2>Your file is ready to Download</h2>
         <p>Link expires in 12 hours</p>

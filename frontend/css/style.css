@@ -66,6 +66,7 @@ ol {
 .mars {
     position: absolute;
     animation: movement 60s linear infinite;
+    z-index: 1;
 }
 
 @keyframes movement {
@@ -111,6 +112,44 @@ header ol li {
 
 header ol li:first-child {
     opacity: 1;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    z-index: 1003;
+    position: relative;
+}
+
+.hamburger-icon {
+    width: 30px;
+    height: 25px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-icon span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 h1 {
@@ -214,7 +253,7 @@ footer a {
 
 
 #drag-drop-area {
-    position: absolute;
+    position: fixed;
     top: 45%; 
     left: 80%;
     transform: translate(-50%, -50%);
@@ -222,11 +261,43 @@ footer a {
     height: 350px;
     border-radius: 95%; 
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(223, 124, 11, 0.322);
     border: 2px dashed rgba(255, 255, 255, 0.5);
     text-align: center;
     cursor: pointer;
-    z-index: 1; 
+    z-index: 1;
+    display: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    touch-action: manipulation;
+}
+
+#drag-drop-area.show {
+    display: block;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
 }
 
 #drag-drop-area.highlight {
@@ -245,16 +316,19 @@ footer a {
     height: 35px; 
 }
 
-#drag-drop-area span {
+#drag-drop-area p {
     display: block;
     color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin: 0;
     position: absolute;
-    top: 59%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    line-height: 1.4;
 }
 
 #file-input {
@@ -341,4 +415,266 @@ footer a {
     font-size: 16px;
     margin-bottom: 10px;
     line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-top: 120px; /* Increased space for the header */
+    }
+    
+    .mars {
+        width: 20rem !important;
+        animation-duration: 45s;
+    }
+    
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+    }
+    
+    .hamburger-menu {
+        display: block;
+        z-index: 1003;
+        position: relative;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: right 0.3s ease;
+        z-index: 1001;
+        padding: 80px 20px 20px;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu li {
+        padding: 15px 25px;
+        font-size: 18px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        min-width: 150px;
+        text-align: center;
+        transition: all 0.3s ease;
+        opacity: 1;
+    }
+    
+    .nav-menu li:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    main {
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 120px);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    h1 {
+        font-size: 36px;
+        text-align: center;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+    
+    main > p {
+        max-width: 100%;
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+    
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+    
+    .d-flex a {
+        margin-right: 0;
+        font-size: 16px;
+        padding: 15px 30px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        min-width: 220px;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .d-flex a:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    ol.info {
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 40px;
+    }
+    
+    ol.info li {
+        flex: 1;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #drag-drop-area {
+        width: 280px;
+        height: 280px;
+        padding: 15px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+    }
+    
+    #drag-drop-area p {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+    
+    /* Ensure drag-drop area is visible on mobile */
+    #drag-drop-area.show {
+        display: block !important;
+    }
+    
+    .project-info {
+        top: 50px;
+        left: 20px;
+        right: 20px;
+        width: auto;
+        height: auto;
+        max-height: 80vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .mars {
+        width: 15rem !important;
+        animation-duration: 40s;
+    }
+    
+    header > a {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+    
+    .nav-menu {
+        width: 200px;
+    }
+    
+    .nav-menu li {
+        padding: 12px 20px;
+        font-size: 16px;
+        min-width: 120px;
+    }
+    
+    .container {
+        padding: 0 15px;
+        padding-top: 100px; /* Increased padding for smaller screens */
+    }
+    
+    main {
+        height: calc(100vh - 100px);
+    }
+    
+    main {
+        max-width: 100%;
+    }
+    
+    h1 {
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    main > p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+    
+    .d-flex {
+        gap: 15px;
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+    
+    .d-flex a {
+        font-size: 14px;
+        padding: 12px 25px;
+        min-width: 200px;
+    }
+    
+    ol.info {
+        gap: 20px;
+        margin-top: 30px;
+    }
+    
+    ol.info li {
+        padding: 20px;
+    }
+    
+    #drag-drop-area {
+        width: 250px;
+        height: 250px;
+        padding: 10px;
+    }
+    
+    #drag-drop-area p {
+        font-size: 11px;
+    }
+    
+    .close-btn {
+        top: 5px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+    }
 }

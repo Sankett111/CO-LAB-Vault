@@ -4,40 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Co-Lab Vault</title>
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📁</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
   crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="../css/style.css" /> 
+  <link rel="stylesheet" href="css/style.css" /> 
 </head>
 <body>
    <span class="bg-img"></span>
-    <img src="../images/mars.png" alt="Co-Lab Vault" class="mars">
+    <img src="images/mars.png" alt="Co-Lab Vault" class="mars">
     <div class="container">
         <header>
             <a href="#">CO-LAB VAULT</a>
-            <ol>
-                <li><a href="../js/index.html">Home</a></li>
+            <div class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <ol class="nav-menu">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="../js/info.html">Info</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Launch Schedule</a></li>
                 <li><a href="#">Contact</a></li>
             </ol>
         </header>
            <main>
             <h1>Streamline Sharing: Your Vault. <br>Effortless Links: Co-Lab Vault</h1>
-            <p>Step into the realm of CO-LAB VAULT, where the intricacies of file sharing dissolve into a seamless
-                symphony of efficiency.
-                Bid adieu to the labyrinthine complexities of logins and authentication protocols. With unparalleled
-                ease, deposit your digital artifacts into our vault, witnessing their metamorphosis into effortlessly
-                distributable links. Whether engaging in collaborative endeavors, disseminating knowledge amongst peers,
-                or meticulously organizing your virtual repository, CO-LAB VAULT elevates the mundane into a
-                choreography of sophistication.
-                Embrace the elegance of streamlined file sharing, liberating your time and resources for pursuits of
-                higher importance.</p>
+            <p>Say goodbye to complex logins and clunky uploads. With Co-Lab Vault, sharing files is fast, easy, and elegant. 
+                Just drop your files in and get instant shareable links perfect for collaboration, knowledge sharing, or organizing your digital space. 
+                Simplify your workflow and focus on what truly matters.</p>
 
             <div class="d-flex">
-                <a href="#">
+                <a href="#" id="drop-files-btn">
                     <span>
                         <i class="fas fa-arrow-right"></i>
                     </span>
@@ -71,13 +71,14 @@
   
 
   <div id="drag-drop-area">
+    <button id="close-drag-drop" class="close-btn">×</button>
     <p>Drag & Drop files here<br>or click to browse</p>
     <input type="file" id="file-input" style="display: none;" />
   </div>
 
   <div id="result"></div>
 
-  <script src="./js/script.js">
+  <script src="js/script.js">
   </script>
 </body>
 </html>
